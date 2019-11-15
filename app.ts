@@ -1,17 +1,17 @@
 import express = require('express');
 import {LogUtil} from "./app/logger/logger.util";
 import {connectToChat} from "./app/controller/chat/chat.controller";
+import {bodyParserConfiguration} from "./app/configuration/body-parser.config";
+
 
 const http = require('http'),
     app: express.Application = express(),
-    log = LogUtil('app'),
+    log = LogUtil('app.ts'),
     server = http.createServer(app),
     port: number = 3000;
 
-app.get('/', (req, res) => {
-    res.send('Chat Server is running on port 3000')
-});
 
+bodyParserConfiguration(app);
 connectToChat(server);
 
 server.listen(port,() =>{
