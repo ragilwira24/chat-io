@@ -10,7 +10,6 @@ const http = require('http'),
     server = http.createServer(app),
     port: number = 3000;
 
-
 bodyParserConfiguration(app);
 connectToChat(server);
 
